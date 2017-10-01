@@ -1,0 +1,446 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf470
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 ArialMT;\f1\fnil\fcharset0 LucidaGrande;}
+{\colortbl;\red255\green255\blue255;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid1\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid101\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid2}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}}
+{\info
+{\title Using Navcomp}}\margl1440\margr1440\vieww14340\viewh21920\viewkind0
+\deftab720
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab720\ri0\qc\partightenfactor0
+
+\f0\fs28 \cf0 Using Navcomp
+\fs24 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab720\ri0\partightenfactor0
+
+\fs20 \cf0 Navcomp is a plugin which allows for plotting reasonably short paths which are hazard free.\
+\
+To Use: Simply click your destination (or destinations with shift-click) on the navigation screen map and click "Plot" in the Navcomp tool bar or use 
+\b /nc plot
+\b0  from the command line.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab720\ri0\partightenfactor0
+
+\b\fs24 \cf0 Options:
+\b0\fs20 \
+	
+\b StormAvoidance On/Off
+\b0  - Requires that Navcomp route around sectors which have\
+		been recorded to have storms in them.\
+	
+\b ManualAvoidance On/Off
+\b0  - By default, Navcomp automatically avoids jumping into\
+		sectors which have been identified as manual avoid sectors (using the 
+\b #avoid:
+\b0 \
+		keyword in that sector's system note).  Turning this option on requires Navcomp\
+		to route around such sectors as well.\
+	
+\b SegmentSmoothing On/Off
+\b0  - Navcomp uses 2 types of path smoothing.  Nodal\
+		smoothing which checks a triplet of jump points.  If a line may be traced\
+		between the 2 end points of the triplet without passing through any prohibited\
+		sectors, the middle jump point is removed.\
+		Segment Smoothing performs the same concept with segments instead of\
+		jump points.  In this case 4 jumps (and the segments between all of them)\
+		are considered.  Navcomp will remove the 2 middle points if a new point\
+		may be added such that a line between the ends and the new middle does\
+		not pass through prohibited sectors.\
+	
+\b Auto Plot On/Off
+\b0  - The player has the ability to save a current navpath with autoplot\
+		turned on.  This will automatically plot that path at load time.  This setting\
+		allows that ability to be turned on for all paths.\
+	
+\b Plot Capital Sectors On/Off
+\b0  - Navcomp by default will not attempt to plot in capital\
+		sectors due to ion storms being turned off, but the player may turn on this\
+		ability if desired.\
+\
+\
+
+\b\fs24 Comparators:
+\b0\fs20 \
+	Stress\
+	Line Stress\
+	Final Line Stress\
+	Distance\
+	Hyperbolic Distance\
+	Hyperbolic Line Distance\
+	Elliptic Distance\
+	Elliptic Line Distance\
+	Final Line Distance\
+	Edge
+\fs24 \
+\
+\
+
+\b Evasion Mode:
+\b0\fs20 \
+	When turned on, this will randomly plot the desired number of jumps from the current\
+	sector.  An indicator pops up in the HUD to inform the player that NC is in evasion\
+	mode.\
+\
+\
+\
+
+\b\fs24 Command line:
+\b0\fs20 \
+\pard\pardeftab720\ri0\sb100\sa100\partightenfactor0
+
+\b \cf0 /navcomp
+\b0  or 
+\b /nc
+\b0  \
+Options:\
+\pard\pardeftab720\li360\ri0\sb100\sa100\partightenfactor0
+
+\b \cf0 plot
+\b0  - Tells NavComp to analyze and plot a path as free of stress as possible, through all the passing systems, to your final destination point. \
+
+\b load <pathname>
+\b0  - Loads a previously saved Navpath if one exists. The label for saved paths is 
+\b a:b
+\b0 , where a is your starting sectorID, and b is your destination sectorID. If no previously saved path with this label exists, nothing happens. Pathname is optional.\
+
+\b save <pathname> <note> <autoplot> <autoreload>
+\b0  - Saves your current Navpath with the label 
+\b a:b
+\b0 . If no navpath as been defined either manually or by NavComp, nothing happens.\
+
+\b help
+\b0  - Prints the list of commands. If a command isn't recognized or missing, you'll get this list too. \
+
+\b clear
+\b0  - Pops up dialog for clearing hazard data from systems.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab720\ri0\partightenfactor0
+\cf0 \
+
+\b       options
+\b0  - Brings up the control dialog\
+\
+\pard\pardeftab720\ri0\sb100\sa100\partightenfactor0
+
+\b \cf0       evade
+\b0  - this is an additional command added to NC's parser to toggle evasion mode.       Performing it once will enter evasion mode, a 2nd time will exit evasion mode. \
+\
+
+\b /evade
+\b0  - this command was added specifically as a short cut to 
+\b /nc evade
+\b0 .  The options screen specifically allows this command to be bound to a key.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab720\ri0\partightenfactor0
+\cf0 \
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab720\ri0\partightenfactor0
+
+\b\fs24 \cf0 Debugging Commands:
+\b0\fs20 \
+They only work inside a single system, but they are:
+\b \
+find
+\b0  (calculates and shows the path between 2 points before the smoothing code kicks in) \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab720\ri0\partightenfactor0
+
+\b \cf0 line
+\b0  (shows which sectors NC considers to lie along a given line between your current point and a designated end point)\
+
+\b analyze
+\b0  (displays the stress map in the chat buffer display).\
+
+\b jumps
+\b0  (displays all the possible jumps from a given waypoint head and a recommended jump based on existing comparators)\
+
+\b metadata
+\b0  (displays the comparator settings for the current system)\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab720\ri0\partightenfactor0
+
+\b\fs24 \cf0 Navigation Tab Tool Panel:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab720\ri0\partightenfactor0
+
+\b0\fs20 \cf0 A tool panel for interacting with Navcomp is conveniently located beside the navmap in the PDA Navigation tab.\
+\
+
+\b Plot
+\b0  - Plots an avoidance path between all the clicked waypoints selected in the navmap.  Hot key: p (only in navigation tab)\
+
+\b Save
+\b0  - Brings up the Save dialog for saving the current navpath.\
+
+\b Load
+\b0  - Brings up the Load dialog to load a previously saved navpath.\
+
+\b Clear Data
+\b0  - Displays a clear dialog which allows data to be cleared in any selected system, or all systems.  It is possible to clear either Hive, Storm, or Manual avoidance data, or any combination of the 3.\
+
+\b Evade/Resume
+\b0  - Only available when outside a station; toggles evasion mode on/off.\
+
+\b Options
+\b0  - Brings up the options GUI for selecting performance options, setting evasion levels, data communication security, defining comparator logic metadata, etc.\
+
+\b Sync
+\b0  - Whenever changes are made to system anchors or manual avoidance sectors, click this button to resynchronize that data inside Navcomp.  This will occur automatically when leaving or entering a station, but this button allows it to be performed at other times\
+
+\b AutoReload
+\b0  - This will set up the currently loaded navpath to auto reload (i.e. be reloaded when reaching the end of the path)  Very useful for making bombing or combat runs\
+\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab720\ri0\partightenfactor0
+
+\b\fs24 \cf0 NavMap Keyword Usage:
+\b0\fs20 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab720\ri0\partightenfactor0
+
+\b \cf0 #avoid:
+\b0 \
+Causes Navcomp to avoid jumps to the sector and  to route around this sector if the manual avoidance option is on.\
+\
+
+\b Anchors:
+\b0 \
+An anchor is a sector to use before jumping into a target sector\
+\
+To place an anchor place the following in the target sector.  (Examples)\
+\
+
+\b #anchors(A7,B5):
+\b0 \
+This will cause Navcomp to insert a jump point of A7 or B5 into your route if it is safe to make the jump.  Navcomp will choose A7 unless prohibited then will try B5.  If all anchors lie on prohibited paths, Navcomp will plot the path normally.\
+\
+
+\b #anchors(*A7):
+\b0 \
+This will cause Navcomp to insert a jump to A7 in your route at all times.  This is known as a fixed anchor.  Once encountering a fixed anchor, any following anchor definition will be ignored.  Fixed anchors are used regardless of the prohibition of the path between it and the target.\
+\
+
+\b Option:
+\b0 \
+There is an option which will make any defined anchor fixed.  When on, only the first defined anchor is considered fixed and will be used at all times.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab720\ri0\partightenfactor0
+
+\fs24 \cf0 \
+\
+
+\b Player to Player Data Transfers:
+\b0 \
+\pard\pardeftab720\ri0\sb75\sa100\partightenfactor0
+
+\fs20 \cf0 If 2 people with Navcomp are in the same bar, you can use the comm buttons to send storm and bot data for selected systems, any previously saved navpaths, or anchor definitions. All communications are through the private chat buffer.  The Exchange may only exchange one type of data at a time, but multiple entries of a given type are selectable.\uc0\u8232 \u8232 To send data:\
+\pard\tx720\pardeftab720\li720\fi-360\ri0\sb100\sa100\partightenfactor0
+\ls1\ilvl0\cf0 1.	Click "Exchange" in the bar.\
+2.	Select the bar patron to send the data to.\
+3.	Select the tab corresponding to the data type to be sent.\
+4.  Select as many items in the type tab as desired.  Items may be "unselected" by clicking on them again, clicking the "Undo" button (which removes selected items in the reverse order they were selected), or clicking the "Undo All" button to remove all selected items.\
+5.  Click Send.  A notification for communications access will be sent to the player previously selected.\
+6.	The designated player will receive a notification that a comm request has been made; that player may accept or refuse. If refusing, nothing happens. All state data is reset. \
+7.	If accepted, the 2 plugins will begin a series of SEND / RESP cycles until all data is sent. The receiver plugin will then process the received data or path.\
+\pard\pardeftab720\ri0\partightenfactor0
+\cf0 \uc0\u8232 \u8232 A player may reset all comm variables by clicking the "Reset" button. This is not recommended during exchange, because comms will stop suddenly.\u8232 \u8232 There are 2 layers of protection for the data exchange to protect against interruption by other players.\
+\pard\tx720\pardeftab720\li720\fi-360\ri0\sb100\sa100\partightenfactor0
+\ls2\ilvl0\cf0 1.	All send and receive communications must be from the designated sender or receiver. All other communications are ignored by NavComp \
+2.	The Comm module must be in the right send or receive state at the right time in the communications sequence or data is not sent or received\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab720\ri0\partightenfactor0
+
+\fs24 \cf0 \
+\
+
+\b Plot Logic Comparators:
+\b0 \
+\pard\pardeftab720\ri0\sb75\sa100\partightenfactor0
+
+\fs20 \cf0 Each system has hazards which are assigned stress numbers.  The greater the concentration of hazards, the more stress.  The end result (if graphically presented) is like a terrain map with mountains, valleys, peaks, and hollows.  Navcomp tries to navigate through this based on the comparator logic defined for that system.  A path is defined with the following terminology: 
+\b Head
+\b0  (the current farthest point of the calculated path.  This always starts out at the start of the path and may include the final destination - at which point the algorithm is completed), 
+\b Waypoint 
+\b0 (one of the currently possible calculated new heads from a current head), 
+\b Destination
+\b0  (the final target point in the current system)  This form of iterated logic is quicker and yields similar results to expert systems looking for specific path types across a system.\
+Navcomp comes with the ability to change how it calculates paths across the universe.  These are known as comparators.  How it works is Navcomp will identify all the possible jumps between the current head of the navpath and all points within 2-3 sectors outward of that point, then sorts those jumps based on the comparator logic, finally using the jump which occurs at the beginning of the sort.  Navcomp then repeats the evaluation, sort, and selection until it reaches its destination.  By changing the comparators, the player can change the way Navcomp plots a path.\
+The Metadata logic functions are: \
+\pard\pardeftab720\ri0\sb100\sa100\partightenfactor0
+
+\b \cf0 Stress
+\b0  - a good way to find a way through passes (i.e. areas of lower stress between encounter areas or sectors which cannot be entered), but is somewhat myopic in finding the shortest route to the final target. Selects a waypoint if its stress is lower than the current head. This is generally a good algorithm for finding a pass down out of a high stress area, but can get lost if already in an area of zero stress.\
+
+\b Line Stress
+\b0  - best obstacle avoidance algorithm possible. This tracks the total amount of stress expected to be encountered between the current navroute head and the final system target. Waypoints with lower line stress have a higher probability of avoiding obstacles. Can have problems in systems with large number of prohibited sectors. (e.g. Deneb) It also has some issues when encountering really large obstacles since our potential waypoints are only 2-3 sectors from the current head, so there may not be enough differential between the current line stress and projected line stress from the new waypoint for the check to determine that it would make a good jump. Calculates the total line stress for the waypoint. This is done by adding up all the sector stresses along the lines between the head and waypoint and the waypoint and target. Fairly good at avoiding obstacles provided there is some distance between the current head and the obstacle, otherwise it usually attempts simply to bull through the middle.\
+
+\b Final Line Stress
+\b0  - Same as above, but only checks the sum of stresses between the waypoint and the target. This has the same limitations as the regular Line Stress algorithm, but can be a little closer to the obstacle. Both Line Stress checks will almost always attempt to jump closer to the target on the first try, even if jumping away would improve the situation. \
+
+\b Distance
+\b0  - a simple calculation of waypoints with an eye towards minimizing the distance between the current head and target that will avoid obvious prohibited sectors. Can be a little myopic in that it can lead a navroute down into cul-de-sacs and not know how to get back out A pure distance calculation. The closest waypoint to the target is chosen. Good for just bulling through obstacles but gets lost quickly in systems with large numbers of asteroid sectors.\
+
+\b Hyperbolic Distance
+\b0  - examines all possible waypoints with the same distance relationship. Excellent routine for finding a way out of cul-de-sacs and considering that sometimes it's necessary to jump away from the target before being able to get closer, however it can lead to convoluted paths and can get lost if starting out in an area of large numbers of prohibited sectors. If d1 is the distance from the head to the waypoint and d2 is the distance is from the waypoint to the target, this calculation is based on the equation: |d1 - d2| = const \
+Attempts to build paths based on chords of hyperbolas. This is good in situations when jumping away is often the best solution, as the path as run into a cul-de-sac. Can lead to very convoluted paths, as away is its preferred direction to towards.\
+
+\b Hyperbolic Line Distance
+\b0  - A less subtle version of Hyperbolic Distance which relies on the number of sectors in a line between 2 points rather than its mathematical distance. It has the same limitations as HD above, but becomes confused less when 2 distances are very close but one has obvious advantages over the other based on angle. \
+
+\b Elliptic Distance
+\b0  - Using the formula: d1 + d2 = const, useful for finding paths through longer straits in a system. Effective at finding a way out of a mass of prohibited sectors, but gets lost in a cul-de-sac. Attempts to build paths based on the chords of ellipses. This is very good for finding paths which weave back and forth through areas and will often find a shorter cleaner path than just Distance will do. However, it can get lost if finding its way down into a cul-de-sac and moving forward closer to the target is out of the question. \
+
+\b Elliptic Line Distance
+\b0  - Same as ED above, but calculated in the same way as HLD with the disadvantages as ED. \
+
+\b Final Line Distance
+\b0  - This has the same relationship to Distance above as the other "line" algorithms have. It has the same disadvantages as well.\
+
+\b Edge
+\b0  - Tries to determine a path around the edges of the system instead of across the center.  Edge looks for corridors (i.e. clear sector paths across the entire system) as a means of affecting distance jumps to the target.  Works best of made the first comparator in a system\'92s metadata.\
+
+\b Line Ratio
+\b0  - Determines a path based on the lowest ratio of total stress vs total distance.  Works well to rapidly find a way out of crowded hostile sectors.
+\fs24 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab720\ri0\partightenfactor0
+\cf0 \
+\pard\pardeftab720\ri0\sb75\sa100\partightenfactor0
+
+\fs20 \cf0 Comparators can be written by players as well.  These can be coded and copied into the /Navcomp/plotter folder, then a dofile command is added to the comparators.lua file in the same folder to allow Navcomp to start using it.  Finally, add some text and the function reference to your new comparator in the /Navcomp/data/data-plotter.lua file under the navcomp.data.plotter table.  This will allow you to refer to the comparator in the metadata logic design tab in the options screen.\
+\pard\pardeftab720\partightenfactor0
+\cf0 	All functions take the same arguments:\
+	\
+	n1 = the waypoint under consideration\
+	n2 = the current best waypoint being considered as the head\
+	s2 = the final target of the navroute within a given system\
+	stats = contains system stress map and stress statistics\
+	area = contains list of considered waypoints and local stress data for jump calculation\
+	\
+	A waypoint has the following structure:\
+	\
+	s = the sector ID of the waypoint\
+	d1 = the real distance from the starting point to the waypoint\
+	d2 = the real distance from the waypoint to the target\
+	str1 = the total sector stress between the starting point and the waypoint\
+	line1 = the line length (in sectors) between the starting point and the waypoint\
+	str2 = the total sector stress between the waypoint and the target\
+	line2 = the line length (in sectors) between the waypoint and the target\
+	blocked = is the path between the waypoint and the target blocked by a prohibited sector?
+\fs24 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab720\ri0\partightenfactor0
+\cf0 \
+
+\b navcomp:Get/SetSectorData:
+\b0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab720\ri0\partightenfactor0
+
+\fs20 \cf0 \
+These 2 functions allow other plugins to store and retrieve customized sector data and use Navcomp\'92s data storage to persist it.  The function calls are: 
+\b navcomp:SetSectorData (sectorId, data) 
+\b0 and 
+\b navcomp:GetSectorData (sectorId)
+\b0 \
+\
+The data object can be any Lua table (i.e.have properties).  Any property which attempts to override one of Navcomp\'92s current keywords is ignored.  The list of keywords is: 
+\b storm
+\b0 , 
+\b bot
+\b0 , 
+\b wormhole
+\b0 , 
+\b avoid
+\b0 , 
+\b asteroid
+\b0 .\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab720\ri0\partightenfactor0
+
+\fs24 \cf0 \
+
+\b Sector Paint:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab720\ri0\partightenfactor0
+
+\b0\fs20 \cf0 \
+As of Navcomp 2.0, the ability to add \'93Sector Paint\'94 (i.e. custom colorization for definable sectors) is available.  There are 2 function calls which affect sector paint: 
+\b navcomp:AddSectorPaint (key, color)
+\b0 , and 
+\b navcomp:RemoveSectorPaint (key)
+\b0 .  This was done so other plugins could use Navcomp to colorize sectors for those plugins\'92 purposes.  (e.g. Meeting point or Rally point, Favorite places to jump people, Other types of Encounters that Navcomp doesn\'92t track, Event locations)\
+\
+Keys may be numbers (direct sector IDs), strings (Full string descriptions of sectors), or functions (which take a sectorId as an argument).  Color is the standard IUP color string (e.g. \'93255 0 0\'94).  Any newer SectoPaint added with the same key will overwrite the older one.\
+\
+Example:\
+Let\'92s say your plugin wants to designate Odia M-14 as a meeting location and color it Purple.  Your plugin can call \
+\
+
+\b navcomp:AddSectorPaint (\'93Odia M-14\'94, \'93255 0 255\'94)
+\b0 \
+\
+This could also be added as \
+\
+
+\b navcomp:AddSectorPaint (5597, \'93255 0 255\'94)
+\b0 \
+\
+both of which will overwrite one another since they point to the same sector.  A final way of adding this paint would be \
+\
+
+\b navcomp:AddSectorPaint (function (sectorId)
+\fs24 \
+
+\fs20   if (sectorId == 5597 then\
+    return true\
+  end\
+end, \'93255 0 255\'94)\
+\
+
+\b0 Instead of an IUP color string, a function returning an IUP color string may be used.  If that function returns nil, no colorization of the sector is conducted.\
+\
+though this 3rd way is more for series of data rather than a single sector to be colorized.  Use 
+\b navcomp:RemoveSectorPaint (key) 
+\b0 to remove any added paint.\
+\
+For any modifications to the navmap which your plugin would like to immediately be painted, fire the event \'93
+\b NAVCOMP_REPAINT
+\b0 \'94 to repaint all navmaps, or pass the data object \{tab = <PDATab object>, sysId = <System ID>\} to specify which navmap tabs or systems to be repainted.  Passing nothing will update all navmaps and the most recently viewed system.  The tab property could be a single PDATab object or an array of PDATab objects.  (e.g. StationPDAShipNavigationTab
+\f1\fs22 )
+\f0\b\fs20 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab720\ri0\partightenfactor0
+
+\fs24 \cf0 \
+Usage notes:
+\b0 \
+\
+\pard\pardeftab720\ri0\sb100\sa100\partightenfactor0
+
+\b\fs20 \cf0 In the Navigation tab in the PDA:
+\b0  Select your final navpoint, then click the Plot button or press \'91p\'92. NC takes care of the rest. You can similarly type 
+\b /nc plot
+\b0  (this could be part of an alias for a bind if you'd like). \
+
+\b Loading a previously saved Navroute:
+\b0  Click the Load button the Navigation tab in the PDA, select a navroute, then click Load. You can bring this screen up at any time by typing 
+\b /nc load
+\b0  \
+
+\b Saving a navroute:
+\b0  After determining your navroute, click the Save button in the Navigation tab in the PDA or typing 
+\b /nc save
+\b0 . Enter a name for your navroute (NC determines a default name by the sectorIds of the endpoints of the route) and enter a note for the route if you choose. Click Save \
+
+\b Clear existing encounter data:
+\b0  Sometimes NC gets clogged because too much storm or bot data has been recorded. This likely can be managed by changing the errant system's waypoint metadata, but you can also choose to clear data as well. Just click the Clear Data button the Navigation PDA and choose which system and data type you want to clear \
+
+\b Hazard Colors:
+\b0  You can pick the navmap colors you want for the 3 types of hazards recognized: Storms, Hostile Bot activity, and Both. Sadly, Guild Software did not see fit to include the implementation for the colorbrowser object in IUP, so I had to improvise one. You enter the RGB values directly as a string, then click a test button to see what the color would look like.\
+
+\b Clearing Hostile Sectors from Navcomp:
+\b0   Just revisit the sector.  If conditions of making it a hostile sector no longer apply, the record will be removed from NC's database.  Sectors involved in Hive Skirmish missions are automatically removed if the player wins the mission, even if not present in the sector.  Killing static queens or leviathans will clear the hostile sector record when those bots are destroyed, but the player must be present at the time of the kill, otherwise simply revisit the sector to clear the record.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab720\ri0\partightenfactor0
+
+\fs24 \cf0 \
+Bugs,errors and other unexpected features:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab720\ri0\partightenfactor0
+
+\fs20 \cf0 If NC acts funny or gets lost, let me know. Send or post your system314159265359notes.txt file which contains all the recorded storm and bot data. This will allow me to use the same data set you are.  (keller3142@gmail.com)
+\fs24 \
+\
+}

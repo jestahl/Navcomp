@@ -1,0 +1,59 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf470
+\cocoascreenfonts1{\fonttbl\f0\fnil\fcharset0 LucidaGrande;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww13640\viewh16460\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs22 \cf0 Functions:\
+
+\b navcomp:PlotPathToSector (sectorId)
+\b0  - Plots a path after performing clerical cleanup first (calls PlotPath)
+\b \
+navcomp:PlotPath (sectorId)
+\b0  - Plots a path to a target sector from the player\'92s current location
+\b \
+navcomp:SavePath (args)
+\b0  - Saves the current active path
+\b \
+navcomp:LoadPath (args)\
+navcomp:ClearStorms ()\
+navcomp:ToggleEvasionMode ()\
+navcomp:Reset ()\
+navcomp:IsEncounteredStormSector (sectorId)
+\b0  - Determines if the passed sectorId is a recorded storm sector
+\b \
+navcomp:IsEncounteredBotSector (sectorId)
+\b0  - Determines if the passed sectorId is a recorded bot sector
+\b \
+navcomp:IsAvoidSector (sectorId)
+\b0  - Determines if the sector\'92s notes contains the keyword 
+\b #avoid:\
+navcomp:IsHostileBotSector (sectorId)\
+navcomp:IsBotSector (sectorId)\
+navcomp:IsStationSector (sectorId)\
+navcomp:IsConquerableStationSector (sectorId)\
+navcomp:IsRacetrackSector (sectorId)\
+navcomp:IsStarSector (sectorId)
+\b0  - Determines if the requested sector is inside a system star
+\b \
+navcomp:IsTrainingSector (sectorId)\
+navcomp:IsSectorProhibited (sectorId, true/false)\
+navcomp:IsBlockableSector (sectorId, true/false)\
+navcomp:IsPathProhibited (sectorId1, sectorId2, true/false)\
+navcomp:IsCapitalSystem (sysId)\
+navcomp:GetSectorData (sectorId)\
+navcomp:SetSectorData (sectorId, data)\
+navcomp:AddSectorPaint (key, colorString)
+\b0 \
+\
+Events:\
+
+\b NAVCOMP_STARTED
+\b0  - Generated when Navcomp has completed initialization.\
+
+\b NAVCOMP_RESTARTING
+\b0  - Generated whenever Navcomp is restarting (after a ReloadInterface call) or the player is logging out.\
+
+\b NAVCOMP_REPAINT
+\b0  - Forces Navcomp to repaint the navmap in the PDA}
